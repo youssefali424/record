@@ -1,3 +1,87 @@
+## 5.0.4
+* fix: Regression on creation sequence when disposing `AudioRecorder` without using it.
+
+## 5.0.3
+* fix: Regression on creation sequence when disposing `AudioRecorder` without using it.
+
+## 5.0.2
+* fix: Creation sequence which may lead to unexpected behaviours.
+
+## 5.0.1
+* fix: close state stream controller on dispose.
+
+## 5.0.0
+* Chore:
+    * Massively reworked platform implementations.
+    * Android now uses MediaCodec. Package is now written with kotlin (well...).
+    * iOS, macOS code now shares almost the same codebase. Unified under record_darwin package.
+    * Windows now uses MediaFoundation shipped with all 10 & 11 versions (no more fmedia executable, yeah! Even if do appreciate the work of stsaz).
+
+* Features:
+    * feat: Add multiple instance support.
+    * feat: Add PCM streaming feature & AAC on Android only.
+    * feat: Add auto gain control, noise suppressor and echo cancellation where available.
+    * feat: Add amplitude on web (Thanks to [youssefali424](https://github.com/youssefali424)).
+    * feat: Add best effort to adjust sample and bit rates to supported values (Android, iOS, macOS).
+    * feat: Add `cancel()` method to stop and remove file if any.
+
+* Fix:
+    * iOS: Should pause/resume recording when interrupted by the system.
+    * web: Add duration metadata to created blob (Thanks to [youssefali424](https://github.com/youssefali424)).
+
+* Breaking changes:
+    * BREAK: `Record` has been renamed to `AudioRecorder` to avoid confusion with dart v3.
+    * BREAK: path is now required on all IO platforms. Set an empty String on web platform.
+    There no more temp file generation.
+    * BREAK: `start` and `startStream` method parameters are now wrapped in `RecordConfig` object.
+    * BREAK: `samplingRate` has been renamed to `sampleRate`.
+    * BREAK: vorbis support has been removed. Too few underlying support.
+
+## 5.0.0-beta.3+1
+* fix: Amplitude timer is not restarted for subsequent recordings.
+* chore: Allow UUID v3 & V4.
+
+## 5.0.0-beta.3
+* fix: Adding events to amplitude stream after close
+
+## 5.0.0-beta.2
+* chore: remove `pcm8bit`. Virtually still available since we have pcm 16 bits.
+* chore: throw exception when encoder is not supported.
+* fix(web): Multiple issues on web platform.
+* fix: Other minor fixes.
+* feat(web): Add WAVE encoder support (16 bits).
+* feat: add utility method `convertBytesToInt16` to convert Uint8List to signed int 16 bits.
+
+## 5.0.0-beta.1
+**Testers needed to reach release !**
+***
+
+* Chore:
+    * Massively reworked platform implementations.
+    * Android now uses MediaCodec. Package is now written with kotlin (well...).
+    * iOS, macOS code now shares almost the same codebase. Unified under record_darwin package.
+    * Windows now uses MediaFoundation shipped with all 10 & 11 versions (no more fmedia executable, yeah! Even if do appreciate the work of stsaz).
+
+* Features:
+    * feat: Add multiple instance support.
+    * feat: Add PCM streaming feature & AAC on Android only (for now).
+    * feat: Add auto gain control, noise suppressor and echo cancellation where available.
+    * feat: Add amplitude on web (Thanks to [youssefali424](https://github.com/youssefali424)).
+    * feat: Add best effort to adjust sample and bit rates to supported values (Android, iOS, macOS).
+    * feat: Add `cancel()` method to stop and remove file if any.
+
+* Fix:
+    * iOS: Should pause/resume recording when interrupted by the system.
+    * web: Add duration metadata to created blob (Thanks to [youssefali424](https://github.com/youssefali424)).
+
+* Breaking changes:
+    * BREAK: `Record` has been renamed to `AudioRecorder` to avoid confusion with dart v3.
+    * BREAK: path is now required on all IO platforms. Set an empty String on web platform.
+    There no more temp file generation.
+    * BREAK: `start` and `startStream` method parameters are now wrapped in `RecordConfig` object.
+    * BREAK: `samplingRate` has been renamed to `sampleRate`.
+    * BREAK: vorbis support has been removed. Too few underlying support.
+
 ## 4.4.4
 * chore: Update linter rules.
 * chore: Update dependencies.

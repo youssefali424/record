@@ -1,3 +1,18 @@
+## 0.7.1
+* chore: Remove channels & sample rates on InputDevice.
+
+## 0.7.0
+* fix: Allow recording with 5.1 & 7.1 channels (respectively 6 & 8).
+
+## 0.6.0
+* chore: Update platform interface.
+
+## 0.5.0
+* chore: Change signature of `start` method.
+* feat: Add multiple instance support.
+* feat: Add `startStream` method.
+* feat: Add `cancel` method.
+
 ## 0.4.1
 - fix: Read all output streams to not leak system resources.
 
